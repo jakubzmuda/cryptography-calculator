@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import _ from 'lodash'
 
 class App extends Component {
 
@@ -85,29 +86,45 @@ class App extends Component {
     const firstInteger = Number(this.state.a);
     const secondInteger = Number(this.state.b);
 
-    const i = 0;
     const a = Math.max(firstInteger, secondInteger);
     const b = Math.min(firstInteger, secondInteger);
-    const q = Math.floor(a / b);
-    const r = a % b;
-    const v = 1;
-    const vPrim = 0;
-    const u = 0;
-    const uPrim = 1;
 
     const firstRow = {
-      i,
-      a,
-      b,
-      q,
-      r,
-      v,
-      vPrim,
-      u,
-      uPrim
+      i: 0,
+      a: a,
+      b: b,
+      q: Math.floor(a / b),
+      r: a % b,
+      v: 1,
+      vPrim: 0,
+      u: 0,
+      uPrim: 1
     };
 
-    return [firstRow];
+    const rows = [firstRow];
+
+    while (_.last(rows).r > 0) {
+      const previousRow = _.last(rows);
+
+
+      const newA = previousRow.b;
+      const newB = previousRow.r;
+      const nextRow = {
+        i: previousRow.i + 1,
+        a: newA,
+        b: newB,
+        q: Math.floor(newA / newB),
+        r: newA % newB,
+        v: previousRow.vPrim - (previousRow.q * previousRow.v),
+        vPrim: previousRow.v,
+        u: previousRow.uPrim - (previousRow.q * previousRow.u),
+        uPrim: previousRow.u
+      };
+
+      rows.push(nextRow);
+    }
+
+    return rows;
   }
 }
 
