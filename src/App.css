@@ -24,6 +24,10 @@
     margin: 0 8px;
 }
 
+.validation-error {
+    margin-top: 16px;
+}
+
 table {
     margin-top: 8px;
     margin-right: 8px;
