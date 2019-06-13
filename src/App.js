@@ -23,9 +23,32 @@ class App extends Component {
             <label>second integer</label>
             <input className={'input'} onChange={event => this.setState({b: event.target.value})} value={this.state.b}/>
           </div>
+          {this.renderTable()}
         </div>
       </div>
     );
+  }
+
+  renderTable () {
+    return (
+      <table>
+        <tr>
+          <th>i</th>
+          <th>ui</th>
+          <th>ui`</th>
+          <th>vi</th>
+          <th>ai</th>
+          <th>bi</th>
+          <th>q</th>
+          <th>r</th>
+        </tr>
+        <tr>
+          <td>Jill</td>
+          <td>Smith</td>
+          <td>50</td>
+        </tr>
+      </table>
+    )
   }
 }
 
