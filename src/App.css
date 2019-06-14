@@ -7,6 +7,10 @@
 
 .app {
     max-width: 900px;
+}
+
+.panel {
+    margin-top: 32px;
     padding: 8px;
     display: flex;
     flex-direction: column;
@@ -42,4 +46,8 @@ table, th, td {
 
 td {
     padding: 4px;
+}
+
+.enhanced {
+    color: blue;
 }
